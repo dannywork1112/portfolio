@@ -1,9 +1,9 @@
 # Zeus
 > ### [InputReader.cs](https://github.com/dannywork1112/portfolio/blob/main/Zeus/InputReader.cs)
-* NewInputSystemÀ» »ç¿ëÇÏ¿© Å°¸¦ Á¶ÀÛÇÏ±â À§ÇÔ
-* Äİ¹éµî·Ï, ¾×¼Ç¸Ê È°¼ºÈ­/ºñÈ°¼ºÈ­, Å° Àç¼³Á¤ µî
+* NewInputSystemì„ ì‚¬ìš©í•˜ì—¬ í‚¤ë¥¼ ì¡°ì‘í•˜ê¸° ìœ„í•¨
+* ì½œë°±ë“±ë¡, ì•¡ì…˜ë§µ í™œì„±í™”/ë¹„í™œì„±í™”, í‚¤ ì¬ì„¤ì • ë“±
 
-#### Äİ¹éµî·Ï
+#### ì½œë°±ë“±ë¡
 ```c#
 protected override void _OnAwake()
 {
@@ -20,13 +20,13 @@ protected override void _OnAwake()
     }
 }
 ```
-* `GameInput.IPlayerControlsActions``GameInput.IPeaceModActions`...µîÀ» »ó¼Ó¹Ş¾Æ Äİ¹é µî·Ï
+* `GameInput.IPlayerControlsActions``GameInput.IPeaceModActions`...ë“±ì„ ìƒì†ë°›ì•„ ì½œë°± ë“±ë¡
 
-#### ¾×¼Ç¸Ê È°¼ºÈ­/ºñÈ°¼ºÈ­
- * `GetActionMapNames(TypeInputActionMap actionMapType)` È£Ãâ
- * ÇØ´ç Å¸ÀÔÀÇ ¾×¼Ç¸ÊÀ» °Ë»öÇÏ¿© È°¼ºÈ­
+#### ì•¡ì…˜ë§µ í™œì„±í™”/ë¹„í™œì„±í™”
+ * `GetActionMapNames(TypeInputActionMap actionMapType)` í˜¸ì¶œ
+ * í•´ë‹¹ íƒ€ì…ì˜ ì•¡ì…˜ë§µì„ ê²€ìƒ‰í•˜ì—¬ í™œì„±í™”
 
-[EnableActionMap]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/InputReader.cs#L159 "¾×¼Ç¸Ê È°¼ºÈ­/ºñÈ°¼ºÈ­"
+[EnableActionMap]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/InputReader.cs#L159 "ì•¡ì…˜ë§µ í™œì„±í™”/ë¹„í™œì„±í™”"
 ```c#
 private void EnableActionMap(InputActionMap actionMap, bool enabled)
 {
@@ -34,31 +34,21 @@ private void EnableActionMap(InputActionMap actionMap, bool enabled)
     else actionMap.Disable();
 }
 ```
-* `EnableActionMap(actionMap, enable);` È£Ãâ·Î ÇØ´ç ¾×¼Ç¸Ê È°¼ºÈ­/ºñÈ°¼ºÈ­
+* `EnableActionMap(actionMap, enable);` í˜¸ì¶œë¡œ í•´ë‹¹ ì•¡ì…˜ë§µ í™œì„±í™”/ë¹„í™œì„±í™”
 ---
 > ### [GameEventSO.cs](https://github.com/dannywork1112/portfolio/blob/main/Zeus/Event/GameEventSO.cs)
-* Äù½ºÆ® ¼ö¶ô, ÁøÇà, ¿Ï·á, ·¹º§¾÷ µîÀÇ °ÔÀÓ ÀÌº¥Æ®¸¦ ScriptableObject·Î °ü¸®
-#### ±â´É
- * [`ÇÔ¼ö`][ÇÔ¼ö¸µÅ©].
-
-[ÇÔ¼ö¸µÅ©]:¸µÅ© "¸µÅ© ³»¿ë"
-
-```c#
-ÄÚµå³»¿ë
-```
-* ÄÚµå ¼³¸í
+* í€˜ìŠ¤íŠ¸ ìˆ˜ë½, ì§„í–‰, ì™„ë£Œ, ë ˆë²¨ì—… ë“±ì˜ ê²Œì„ ì´ë²¤íŠ¸ë¥¼ ScriptableObjectë¡œ ê´€ë¦¬
 ---
 > ### [QuestManager.cs](https://github.com/dannywork1112/portfolio/blob/main/Zeus/Quest/QuestManager.cs)
-* Äù½ºÆ® Ãß°¡, Á¦°Å, ¾÷µ¥ÀÌÆ®
-* Äù½ºÆ®ÀÇ ÇÏÀ§¿©ºÎ¸¦ ÆÇ´ÜÇÏ¿© ¿Ï·á¿©ºÎ ÆÇ´Ü
-#### Äù½ºÆ® ¾÷µ¥ÀÌÆ®
+* í€˜ìŠ¤íŠ¸ ì¶”ê°€, ì œê±°, ì—…ë°ì´íŠ¸
+* í€˜ìŠ¤íŠ¸ì˜ í•˜ìœ„ì—¬ë¶€ë¥¼ íŒë‹¨í•˜ì—¬ ì™„ë£Œì—¬ë¶€ íŒë‹¨
+#### í€˜ìŠ¤íŠ¸ ì—…ë°ì´íŠ¸
  * [`QuestProcess`][QuestProcess].
  * `UpdateStep(TypeQuestStep type, int targetID, int targetValue)`
 
-[QuestProcess]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/Quest/QuestManager.cs#L178 "Äù½ºÆ® ¾÷µ¥ÀÌÆ®"
+[QuestProcess]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/Quest/QuestManager.cs#L178 "í€˜ìŠ¤íŠ¸ ì—…ë°ì´íŠ¸"
 
  * [`QuestStepProcess`][QuestStepProcess].
  * `UpdateStep(TypeQuestStep type, int targetID, int targetValue)`
 
-[QuestStepProcess]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/Quest/QuestManager.cs#L230 "Äù½ºÆ® ¾÷µ¥ÀÌÆ®"
----
+[QuestStepProcess]:https://github.com/dannywork1112/portfolio/blob/47d2f3b403f9cfbd7b76716d9f6c24216b0eaa75/Zeus/Quest/QuestManager.cs#L230 "í€˜ìŠ¤íŠ¸ ì—…ë°ì´íŠ¸"
