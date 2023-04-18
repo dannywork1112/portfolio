@@ -188,6 +188,166 @@ namespace Zeus
             }
         }
 
+        #region Rebind
+        public InputAction GetAction(string actionName)
+        {
+            return _gameInput.asset.FindAction(actionName);
+        }
+        public void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText)
+        {
+            var action = GetAction(actionName);
+            if (action == null || action.bindings.Count <= bindingIndex)
+            {
+                Debug.Log("Action 혹은 Binding을 찾을 수 없음.");
+                return;
+            }
+
+            if (action.bindings[bindingIndex].isComposite)
+            {
+                var firstPartIndex = bindingIndex + 1;
+                if (firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isPartOfComposite)
+                    PerformRebind(action, firstPartIndex, true);
+            }
+            else
+                PerformRebind(action, bindingIndex, false);
+        }
+        private void PerformRebind(InputAction action, int bindingIndex, bool allCompositeParts)
+        {
+            if (action == null || bindingIndex < 0) return;
+
+            action.Disable();
+
+            var rebind = action.PerformInteractiveRebinding(bindingIndex)
+                .WithExpectedControlType("Button")
+                .WithControlsExcluding("<Mouse>/leftButton")
+                .WithControlsExcluding("<Mouse>/rightButton")
+                .WithControlsExcluding("<Mouse>/press")
+                .WithCancelingThrough("<Any>/Cancel")
+                .OnCancel(operation =>
+                {
+                    //m_RebindStopEvent?.Invoke(this, operation);
+                    //m_RebindOverlay?.SetActive(false);
+                    //UpdateBindingDisplay();
+
+                    //action.Enable();
+                    operation.Dispose();
+                    CallRebindUpdated?.Invoke();
+                    CallRebindStopped?.Invoke(false);
+                })
+                .OnComplete(operation =>
+                {
+                    //m_RebindOverlay?.SetActive(false);
+                    //m_RebindStopEvent?.Invoke(this, operation);
+                    //UpdateBindingDisplay();
+
+                    if (CheckDuplicateBindings(action, bindingIndex, allCompositeParts))
+                    {
+                        action.RemoveBindingOverride(bindingIndex);
+                        operation.Dispose();
+                        PerformRebind(action, bindingIndex, allCompositeParts);
+                        return;
+                    }
+
+                    //action.Enable();
+                    operation.Dispose();
+                    CallRebindUpdated?.Invoke();
+                    CallRebindStopped?.Invoke(true);
+
+                    if (allCompositeParts)
+                    {
+                        var nextBindingIndex = bindingIndex + 1;
+                        if (nextBindingIndex < action.bindings.Count && action.bindings[nextBindingIndex].isPartOfComposite)
+                            PerformRebind(action, nextBindingIndex, allCompositeParts);
+                    }
+
+                    SaveBindingOverride(action);
+                });
+
+            var partName = default(string);
+            if (action.bindings[bindingIndex].isPartOfComposite)
+                partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
+
+            var rebindText = !string.IsNullOrEmpty(action.expectedControlType)
+                ? $"{partName}Waiting for {action.expectedControlType} input..."
+                : $"{partName}Waiting for input...";
+
+            CallRebindStarted?.Invoke(rebindText);
+
+            rebind.Start();
+        }
+        private bool CheckDuplicateBindings(InputAction action, int bindingIndex, bool allCompositeParts)
+        {
+            var newBinding = action.bindings[bindingIndex];
+            foreach (InputBinding binding in action.actionMap.bindings)
+            {
+                if (binding.action == newBinding.action) continue;
+
+                if (binding.effectivePath == newBinding.effectivePath)
+                {
+                    Debug.Log($"바인딩 중복 : {newBinding.effectivePath}");
+                    return true;
+                }
+            }
+
+            if (allCompositeParts)
+            {
+                for (int i = 0; i < bindingIndex; i++)
+                {
+                    if (action.bindings[i].effectivePath == newBinding.effectivePath)
+                    {
+                        Debug.Log($"바인딩 중복 : {newBinding.effectivePath}");
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void SaveBindingOverride(InputAction action)
+        {
+            for (int i = 0; i < action.bindings.Count; i++)
+            {
+                PlayerPrefs.SetString(action.actionMap + action.name + i, action.bindings[i].overridePath);
+            }
+        }
+        public void LoadBindingOverride(string actionName)
+        {
+            var action = GetAction(actionName);
+            if (action == null)
+            {
+                Debug.Log("Action 을 찾을 수 없음.");
+                return;
+            }
+
+            for (int i = 0; i < action.bindings.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(PlayerPrefs.GetString(action.actionMap + action.name + i)))
+                    action.ApplyBindingOverride(i, PlayerPrefs.GetString(action.actionMap + action.name + i));
+            }
+        }
+        public void ResetBinding(string actionName, int bindingIndex)
+        {
+            var action = GetAction(actionName);
+            if (action == null || action.bindings.Count <= bindingIndex)
+            {
+                Debug.Log("Action 혹은 Binding을 찾을 수 없음.");
+                return;
+            }
+
+            if (action.bindings[bindingIndex].isComposite)
+            {
+                for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
+                    action.RemoveBindingOverride(i);
+            }
+            else
+            {
+                action.RemoveBindingOverride(bindingIndex);
+            }
+            CallRebindUpdated?.Invoke();
+            SaveBindingOverride(action);
+        }
+        #endregion
+
         #region IPlayerControlsActions
         public void OnMove(InputAction.CallbackContext context)
         {
@@ -486,166 +646,6 @@ namespace Zeus
             if (!Enable) return;
             if (context.phase == InputActionPhase.Performed)
                 CallQuickTabExit.Invoke();
-        }
-        #endregion
-
-        #region Rebind
-        public InputAction GetAction(string actionName)
-        {
-            return _gameInput.asset.FindAction(actionName);
-        }
-        public void StartRebind(string actionName, int bindingIndex, TextMeshProUGUI statusText)
-        {
-            var action = GetAction(actionName);
-            if (action == null || action.bindings.Count <= bindingIndex)
-            {
-                Debug.Log("Action 혹은 Binding을 찾을 수 없음.");
-                return;
-            }
-
-            if (action.bindings[bindingIndex].isComposite)
-            {
-                var firstPartIndex = bindingIndex + 1;
-                if (firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isPartOfComposite)
-                    PerformRebind(action, firstPartIndex, true);
-            }
-            else
-                PerformRebind(action, bindingIndex, false);
-        }
-        private void PerformRebind(InputAction action, int bindingIndex, bool allCompositeParts)
-        {
-            if (action == null || bindingIndex < 0) return;
-
-            action.Disable();
-
-            var rebind = action.PerformInteractiveRebinding(bindingIndex)
-                .WithExpectedControlType("Button")
-                .WithControlsExcluding("<Mouse>/leftButton")
-                .WithControlsExcluding("<Mouse>/rightButton")
-                .WithControlsExcluding("<Mouse>/press")
-                .WithCancelingThrough("<Any>/Cancel")
-                .OnCancel(operation =>
-                {
-                    //m_RebindStopEvent?.Invoke(this, operation);
-                    //m_RebindOverlay?.SetActive(false);
-                    //UpdateBindingDisplay();
-
-                    //action.Enable();
-                    operation.Dispose();
-                    CallRebindUpdated?.Invoke();
-                    CallRebindStopped?.Invoke(false);
-                })
-                .OnComplete(operation =>
-                {
-                    //m_RebindOverlay?.SetActive(false);
-                    //m_RebindStopEvent?.Invoke(this, operation);
-                    //UpdateBindingDisplay();
-
-                    if (CheckDuplicateBindings(action, bindingIndex, allCompositeParts))
-                    {
-                        action.RemoveBindingOverride(bindingIndex);
-                        operation.Dispose();
-                        PerformRebind(action, bindingIndex, allCompositeParts);
-                        return;
-                    }
-
-                    //action.Enable();
-                    operation.Dispose();
-                    CallRebindUpdated?.Invoke();
-                    CallRebindStopped?.Invoke(true);
-
-                    if (allCompositeParts)
-                    {
-                        var nextBindingIndex = bindingIndex + 1;
-                        if (nextBindingIndex < action.bindings.Count && action.bindings[nextBindingIndex].isPartOfComposite)
-                            PerformRebind(action, nextBindingIndex, allCompositeParts);
-                    }
-
-                    SaveBindingOverride(action);
-                });
-
-            var partName = default(string);
-            if (action.bindings[bindingIndex].isPartOfComposite)
-                partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
-
-            var rebindText = !string.IsNullOrEmpty(action.expectedControlType)
-                ? $"{partName}Waiting for {action.expectedControlType} input..."
-                : $"{partName}Waiting for input...";
-
-            CallRebindStarted?.Invoke(rebindText);
-
-            rebind.Start();
-        }
-        private bool CheckDuplicateBindings(InputAction action, int bindingIndex, bool allCompositeParts)
-        {
-            var newBinding = action.bindings[bindingIndex];
-            foreach (InputBinding binding in action.actionMap.bindings)
-            {
-                if (binding.action == newBinding.action) continue;
-
-                if (binding.effectivePath == newBinding.effectivePath)
-                {
-                    Debug.Log($"바인딩 중복 : {newBinding.effectivePath}");
-                    return true;
-                }
-            }
-
-            if (allCompositeParts)
-            {
-                for (int i = 0; i < bindingIndex; i++)
-                {
-                    if (action.bindings[i].effectivePath == newBinding.effectivePath)
-                    {
-                        Debug.Log($"바인딩 중복 : {newBinding.effectivePath}");
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        private void SaveBindingOverride(InputAction action)
-        {
-            for (int i = 0; i < action.bindings.Count; i++)
-            {
-                PlayerPrefs.SetString(action.actionMap + action.name + i, action.bindings[i].overridePath);
-            }
-        }
-        public void LoadBindingOverride(string actionName)
-        {
-            var action = GetAction(actionName);
-            if (action == null)
-            {
-                Debug.Log("Action 을 찾을 수 없음.");
-                return;
-            }
-
-            for (int i = 0; i < action.bindings.Count; i++)
-            {
-                if (!string.IsNullOrEmpty(PlayerPrefs.GetString(action.actionMap + action.name + i)))
-                    action.ApplyBindingOverride(i, PlayerPrefs.GetString(action.actionMap + action.name + i));
-            }
-        }
-        public void ResetBinding(string actionName, int bindingIndex)
-        {
-            var action = GetAction(actionName);
-            if (action == null || action.bindings.Count <= bindingIndex)
-            {
-                Debug.Log("Action 혹은 Binding을 찾을 수 없음.");
-                return;
-            }
-
-            if (action.bindings[bindingIndex].isComposite)
-            {
-                for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
-                    action.RemoveBindingOverride(i);
-            }
-            else
-            {
-                action.RemoveBindingOverride(bindingIndex);
-            }
-            CallRebindUpdated?.Invoke();
-            SaveBindingOverride(action);
         }
         #endregion
     }
