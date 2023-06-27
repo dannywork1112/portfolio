@@ -11,6 +11,6 @@
 * 갓오브워를 참고하여 제작. 스토리와 비주얼을 강조한 게임플레이.
 * 전투, 성장, 제작, 퀘스트 등 다양한 경험 제공.
 
-# 3. [TowerDefense](https://github.com/dannywork1112/portfolio/tree/main/TowerDefense)
-* 입력된 방향으로 총알을 발사하여 다가오는 적을 물리치는 디펜스 게임.
-* 성장과 랜덤요소가 포함되어 있고 스킬을 활용하여 다채로운 플레이를 제공.
+## 3. [DOTS](https://github.com/dannywork1112/portfolio/tree/main/DOTS_URP)
+* DOTS 학습을 위한 프로젝트.
+* 입력된 방향으로 총알을 발사.
