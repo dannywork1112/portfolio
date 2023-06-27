@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -11,6 +12,7 @@ public class GameSceneManager : Singleton<GameSceneManager>
     [SerializeField] private GameConfig _gameConfig;
     [SerializeField] private CameraController _cameraController;
     [SerializeField] private WeaponCooldownUI _cooldownUI;
+    [SerializeField] private TMP_Text _projectileCountText;
 
     private World _world;
     private EntityManager _entityManager;
@@ -47,7 +49,6 @@ public class GameSceneManager : Singleton<GameSceneManager>
     {
         if (!_initialized) return;
         _cameraAngleY = _cameraController.Transform.eulerAngles.y;
-        //}
     }
 
     private void Start()
@@ -68,52 +69,22 @@ public class GameSceneManager : Singleton<GameSceneManager>
 
         _initialized = true;
     }
-
     private void OnDisable()
     {
         if (World.DefaultGameObjectInjectionWorld == null) return;
         var cooldownSystem = _world.GetExistingSystemManaged<WeaponCooldownSystem>();
         cooldownSystem.OnUpdageCooldown -= SetCooldown;
     }
-
     private void Update()
     {
-        //var queryBuilder = new EntityQueryBuilder(Allocator.Temp)
-        //    .WithAll<WeaponComponent, WeaponAttackTimerComponent>();
+        var projectileQuery = _entityManager.CreateEntityQuery(typeof(ProjectileComponent));
+        var count = projectileQuery.CalculateEntityCount();
 
-        //var fireReadyWeapons = queryBuilder.WithAll<WeaponFireReadyTag>().Build(_entityManager).ToComponentDataArray<WeaponComponent>(Allocator.Temp).ToList();
-        //var fireWeapons = queryBuilder.WithAll< WeaponFireTag>().Build(_entityManager).ToComponentDataArray<WeaponComponent>(Allocator.Temp).ToList();
-        //var cooldownWeapons = queryBuilder.WithNone<WeaponFireReadyTag, WeaponFireTag>().Build(_entityManager).ToComponentDataArray<WeaponComponent>(Allocator.Temp).ToList();
-
-        //var weapons = _weaponQuery.ToComponentDataArray<WeaponComponent>(Allocator.Temp).ToList();
-        //var timers = _weaponQuery.ToComponentDataArray<WeaponAttackTimerComponent>(Allocator.Temp);
-        //var weaponEntities = _weaponQuery.ToEntityArray(Allocator.Temp);
-
-        //for (int i = 0; i < _createdWeaponsID.Count; i++)
-        //{
-        //    var weaponID = _createdWeaponsID[i];
-        //    var queryIndex = weapons.FindIndex(x => x.ID == weaponID);
-        //    if (queryIndex == -1) continue;
-
-        //    var ratio = timers[queryIndex].Timer / weapons[queryIndex].Delay;
-        //    _cooldownUI.SetCooldown(i, ratio);
-        //}
+        _projectileCountText.SetText($"Projectile Entity Count : {count}");
     }
 
     public void AddWeapon(int weaponID)
     {
-        //var towerQuery = _entityManager.CreateEntityQuery(typeof(TowerComponent));
-
-        //foreach (var towerEntity in towerQuery.ToEntityArray(Allocator.Temp))
-        //{
-        //    var buffer = _entityManager.GetBuffer<CreateReadyWeaponElementData>(towerEntity);
-        //    buffer.Add(new CreateReadyWeaponElementData
-        //    {
-        //        WeaponID = weaponID,
-        //    });
-        //    break;
-        //}
-
         var MAX_WEAPON_COUNT = 8;
         if (_createdWeaponsID.Count == MAX_WEAPON_COUNT) return;
         if (_createdWeaponsID.Contains(weaponID)) return;
@@ -172,7 +143,7 @@ public partial class GameInitializeSystem : SystemBase
 
         // Init Scene
         var gameConfig = SystemAPI.GetSingletonRW<GameConfigComponent>();
-        gameConfig.ValueRW.RandomData.InitState((uint)System.DateTime.Now.Ticks);
+        gameConfig.ValueRW.RandomData.InitState((uint)DateTime.Today.Ticks);
 
         // 타워 초기화
         var towerComponent = SystemAPI.GetComponentRW<TowerComponent>(towerEntity, false);

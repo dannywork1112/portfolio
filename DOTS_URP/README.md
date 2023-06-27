@@ -6,3 +6,9 @@
 
 > ## 참고 자료
 * [EntityCommandSystemSample](https://github.com/Unity-Technologies/EntityComponentSystemSamples)
+
+> 이미지
+![main](./ReadMeImages/main%20scene.png)
+![1](./ReadMeImages/1.png)
+![2](./ReadMeImages/2.png)
+![3](./ReadMeImages/3.png)
