@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11f2840bb8f5244d9d9a43f70c79578, type: 3}
+  m_Name: TowerAbilityTable
+  m_EditorClassIdentifier: 
+  Datas:
+  - ID: 0
+    Attack: 5
+    Interval: 5
+    AbilityPrefab: {fileID: 0}
+  - ID: 1
+    Attack: 6
+    Interval: 6
+    AbilityPrefab: {fileID: 0}
+  - ID: 2
+    Attack: 7
+    Interval: 7
+    AbilityPrefab: {fileID: 0}
+  - ID: 3
+    Attack: 8
+    Interval: 8
+    AbilityPrefab: {fileID: 0}
+  - ID: 4
+    Attack: 9
+    Interval: 9
+    AbilityPrefab: {fileID: 0}
+  - ID: 5
+    Attack: 10
+    Interval: 10
+    AbilityPrefab: {fileID: 0}

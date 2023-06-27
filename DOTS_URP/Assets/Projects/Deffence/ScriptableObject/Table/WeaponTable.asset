@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929a38b713d1d1d47b367b15ecef41a6, type: 3}
+  m_Name: WeaponTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: 1000
+    Delay: 0.2
+    FireInfo:
+      FireType: 0
+      Amount: 1
+      Count: 1
+      Interval: 0
+      Angle: 0
+      Random: 0
+    Prefab: {fileID: 5991360951760051788, guid: 3af9d74388ff30346acc73410c2df981,
+      type: 3}
+    ProjectilePrefab: {fileID: 2951678375471270292, guid: b433f730dd247c54abcf5998c7ccfdd6,
+      type: 3}
+  - ID: 1001
+    Delay: 0.4
+    FireInfo:
+      FireType: 1
+      Amount: 1
+      Count: 1
+      Interval: 0
+      Angle: 0
+      Random: 0
+    Prefab: {fileID: 5684066975708802942, guid: a14a41b64bd38114c838d988ee57539b,
+      type: 3}
+    ProjectilePrefab: {fileID: 3758262957553667224, guid: 3d388c68dd5fc5d4db571767372fdcf5,
+      type: 3}
+  - ID: 1002
+    Delay: 0.6
+    FireInfo:
+      FireType: 0
+      Amount: 3
+      Count: 1
+      Interval: 0
+      Angle: 0
+      Random: 0
+    Prefab: {fileID: 7328512888548871518, guid: 5edf73b5cff4dd649a0c021007d5c87e,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: 16340f5c404414e4d93ad08efd7f15d6,
+      type: 3}
+  - ID: 1003
+    Delay: 0.8
+    FireInfo:
+      FireType: 1
+      Amount: 3
+      Count: 1
+      Interval: 0
+      Angle: 0
+      Random: 0
+    Prefab: {fileID: 7328512888548871518, guid: 1cfd8a96483b66c4b9ceb4c3196cc56e,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: 774781debbf200b409485c925887b9fb,
+      type: 3}
+  - ID: 1004
+    Delay: 1
+    FireInfo:
+      FireType: 0
+      Amount: 4
+      Count: 4
+      Interval: 0.2
+      Angle: 30
+      Random: 0
+    Prefab: {fileID: 7328512888548871518, guid: 69b007e0880f5b34dbfd0498da6f5a74,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: b9f71580ec9f6e846bda9583e925deb7,
+      type: 3}
+  - ID: 1005
+    Delay: 1.2
+    FireInfo:
+      FireType: 1
+      Amount: 4
+      Count: 4
+      Interval: 0.2
+      Angle: 30
+      Random: 0
+    Prefab: {fileID: 7328512888548871518, guid: ff5f06a60d6477e4080ef62154c2b5ec,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: 9dd5da320b8f83149bce1affdadc30ac,
+      type: 3}
+  - ID: 1006
+    Delay: 1.2
+    FireInfo:
+      FireType: 1
+      Amount: 4
+      Count: 4
+      Interval: 0.2
+      Angle: 30
+      Random: 1
+    Prefab: {fileID: 7328512888548871518, guid: e9a23f0bc23e66747ae2d2aebdecb022,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: 1edcfd72b9161b34fb02cac85b0179dc,
+      type: 3}
+  - ID: 1007
+    Delay: 1.2
+    FireInfo:
+      FireType: 1
+      Amount: 4
+      Count: 4
+      Interval: 0.2
+      Angle: 30
+      Random: 1
+    Prefab: {fileID: 7328512888548871518, guid: 3738c869491e66a41aaef0d974132e4c,
+      type: 3}
+    ProjectilePrefab: {fileID: 5061486479486504712, guid: ba71c914abb2fbf41b6439177cd0d405,
+      type: 3}

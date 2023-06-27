@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a307c5524209c54ea4fba06899b315b, type: 3}
+  m_Name: EnemyTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: 2000
+    MaxHP: 1
+    Damage: 1
+    MoveSpeed: 0
+    AttackSpeed: 1
+    Prefab: {fileID: 8565141223375791886, guid: ecdabfe05e0503d45bdbfd8d195624e5,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 507f7adf0c04a3241914e1485acdd26f, type: 2}
+  - ID: 2001
+    MaxHP: 2
+    Damage: 2
+    MoveSpeed: 0
+    AttackSpeed: 2
+    Prefab: {fileID: 8565141223375791886, guid: 58e933cc2b205854e8bd6b0fc7777bcd,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 4c5cdf452bb571746a06ff02cbfcbaec, type: 2}
+  - ID: 2002
+    MaxHP: 3
+    Damage: 3
+    MoveSpeed: 0
+    AttackSpeed: 3
+    Prefab: {fileID: 8565141223375791886, guid: d4b6b944dd7c8af4eb92f8ab53a70366,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 64e17e4fc38f5e64dac11bf07338dead, type: 2}
+  - ID: 2003
+    MaxHP: 4
+    Damage: 4
+    MoveSpeed: 0
+    AttackSpeed: 4
+    Prefab: {fileID: 8565141223375791886, guid: 778902b10b1c47048a3eafee5a703274,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 17450f47d5d9af94e834b73b95ed1cd7, type: 2}
+  - ID: 2004
+    MaxHP: 5
+    Damage: 5
+    MoveSpeed: 0
+    AttackSpeed: 5
+    Prefab: {fileID: 8565141223375791886, guid: 485921aa993a68245ac7cbbdd872da74,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 599b6452b22167a49afd882bfe3042ca, type: 2}
+  - ID: 2005
+    MaxHP: 6
+    Damage: 6
+    MoveSpeed: 0
+    AttackSpeed: 6
+    Prefab: {fileID: 8565141223375791886, guid: b89412116b796ae4daa04bbe435a0ebb,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: b6208fcabf45e7f43b190a79634d58b4, type: 2}
+  - ID: 2006
+    MaxHP: 7
+    Damage: 7
+    MoveSpeed: 0
+    AttackSpeed: 7
+    Prefab: {fileID: 8565141223375791886, guid: 02cee44dcc37e724b9fecb39523957e4,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 49ea9061e4631fe4b9dfc9d23bbc20fa, type: 2}
+  - ID: 2007
+    MaxHP: 8
+    Damage: 8
+    MoveSpeed: 0
+    AttackSpeed: 8
+    Prefab: {fileID: 8565141223375791886, guid: a2a91110651edcf4db020cce9093cffb,
+      type: 3}
+    Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    Material: {fileID: 2100000, guid: 558c53bd7ab371e4d8122ac564c895a7, type: 2}

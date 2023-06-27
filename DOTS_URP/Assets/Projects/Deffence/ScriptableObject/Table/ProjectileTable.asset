@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308a903502e0c294f9c07aec6dcd6f91, type: 3}
+  m_Name: ProjectileTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: 5000
+    Speed: 5
+    Prefab: {fileID: 2951678375471270292, guid: b433f730dd247c54abcf5998c7ccfdd6,
+      type: 3}
+  - ID: 5001
+    Speed: 7
+    Prefab: {fileID: 3758262957553667224, guid: 3d388c68dd5fc5d4db571767372fdcf5,
+      type: 3}
+  - ID: 5002
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: 16340f5c404414e4d93ad08efd7f15d6,
+      type: 3}
+  - ID: 5003
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: 774781debbf200b409485c925887b9fb,
+      type: 3}
+  - ID: 5004
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: b9f71580ec9f6e846bda9583e925deb7,
+      type: 3}
+  - ID: 5005
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: 9dd5da320b8f83149bce1affdadc30ac,
+      type: 3}
+  - ID: 5006
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: 1edcfd72b9161b34fb02cac85b0179dc,
+      type: 3}
+  - ID: 5007
+    Speed: 10
+    Prefab: {fileID: 5061486479486504712, guid: ba71c914abb2fbf41b6439177cd0d405,
+      type: 3}
