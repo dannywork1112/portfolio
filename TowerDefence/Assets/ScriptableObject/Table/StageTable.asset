@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b14af3b5a103034aa6b4e1262ee7f35, type: 3}
+  m_Name: StageTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: Stage 1
+    LimitTime: 60
+    WaveDatas:
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 3
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 5
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 8
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 12
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 12
+      - EnemyID: Enemy 2
+        Chance: 100
+        Amount: 1
+  - ID: Stage 2
+    LimitTime: 60
+    WaveDatas:
+    - SpawnDatas:
+      - EnemyID: Enemy 1
+        Chance: 100
+        Amount: 12
+      - EnemyID: Enemy 2
+        Chance: 100
+        Amount: 3

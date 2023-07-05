@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef75989ec89f3a4a8d59aceaef4db23, type: 3}
+  m_Name: TowerTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: Tower 1
+    MaxHP: 100
+    FireDelay: 0.1
+    Prefab: {fileID: 1743763919437422382, guid: e731eee9da6cf874d8889478bd203f88,
+      type: 3}

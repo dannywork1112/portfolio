@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142fd71860601ba4d81c5fa5af9381d4, type: 3}
+  m_Name: EnemyTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: Enemy 1
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: 74e8b79183665b04e993874669f91f6f,
+      type: 3}
+  - ID: Enemy 2
+    Damage: 7
+    MaxHP: 12
+    MovementSpeed: 3
+    AttackSpeed: 3.5
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: c83a2ff11eb3cca48842139b5f2cfda4,
+      type: 3}
+  - ID: Enemy 3
+    Damage: 10
+    MaxHP: 15
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 4
+    Prefab: {fileID: 3240544612609389983, guid: a28528bbb74b0e544803f67a33ce853b,
+      type: 3}
+  - ID: Enemy 4
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: 99ff453b20d84d44a98fd71a8fdad25a,
+      type: 3}
+  - ID: Enemy 5
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: 288458fda5a45a24b823eeebf0d1b433,
+      type: 3}
+  - ID: Enemy 6
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: c14fea0157e868e46b854887b6987b48,
+      type: 3}
+  - ID: Enemy 7
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: 283242a4699a1e345a6fadd533644eab,
+      type: 3}
+  - ID: Enemy 8
+    Damage: 5
+    MaxHP: 10
+    MovementSpeed: 3
+    AttackSpeed: 3
+    AttackRange: 3
+    Prefab: {fileID: 3240544612609389983, guid: 4f6dbeae63b4c734ba5d1888ee00aff4,
+      type: 3}

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe2dee834b40de746b104c6b0d35f868, type: 3}
+  m_Name: ProjectileTable
+  m_EditorClassIdentifier: 
+  _datas:
+  - ID: Projectile 1
+    Speed: 20
+    Damage: 1
+    LifeTime: 10
+    StiffTime: 1
+    KnockbackDistance: 0.5
+    Prefab: {fileID: 8616892589048734897, guid: 29828b41481095940afa6d8ef42ddd98,
+      type: 3}
+  - ID: Projectile 2
+    Speed: 20
+    Damage: 1
+    LifeTime: 10
+    StiffTime: 0.5
+    KnockbackDistance: 1
+    Prefab: {fileID: 8086516922234762662, guid: e0a7d56d5fb5ed343ba5a622584100be,
+      type: 3}
+  - ID: Projectile 3
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 0
+    KnockbackDistance: 2
+    Prefab: {fileID: 8086516922234762662, guid: fcb15852e62c41b41bf6ba7eda4d8529,
+      type: 3}
+  - ID: Projectile 4
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 2
+    KnockbackDistance: 0
+    Prefab: {fileID: 8616892589048734897, guid: 0325568198cf6724abaafcaa0dcc5c24,
+      type: 3}
+  - ID: Projectile 5
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 1
+    KnockbackDistance: 1
+    Prefab: {fileID: 8086516922234762662, guid: 23acf1a3daa53084eac711452d1ac91e,
+      type: 3}
+  - ID: Projectile 6
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 1
+    KnockbackDistance: 1
+    Prefab: {fileID: 8086516922234762662, guid: 6413758399a7a694abc152f25ea93e1c,
+      type: 3}
+  - ID: Projectile 7
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 1
+    KnockbackDistance: 1
+    Prefab: {fileID: 8616892589048734897, guid: 25896dd2f2067534b8b3a8322c12710b,
+      type: 3}
+  - ID: Projectile 8
+    Speed: 20
+    Damage: 2
+    LifeTime: 10
+    StiffTime: 1
+    KnockbackDistance: 1
+    Prefab: {fileID: 8086516922234762662, guid: ecc035db29c92de4e84735d228559e85,
+      type: 3}
